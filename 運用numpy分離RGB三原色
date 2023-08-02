@@ -1,0 +1,44 @@
+from PIL import Image
+import numpy as np
+
+with Image.open('C:\\Users\\daiyi\\OneDrive\\桌面\\PYTHON\\python(dai)\\Numpy_OpenCV\\imgs\\2023-3-31-1.png') as im:
+    # im.show( )
+    img = np.array(im)
+    img_list = img.tolist()
+    print(img.shape)
+    img1 = np.transpose(img,(2,0,1))
+    print(img1.shape)
+    print(img1[0])
+    gray = im.convert('L')  #L為灰色圖像
+
+    # gray = np.ones((img1[0].shape[0], img1[0].shape[1]), dtype = np.uint8)
+    # for row in range(img1[0].shape[0]):    #shape[0]跑列
+    #     for col in range(img1[0].shape[1]):  #shape[1]跑行
+    #         gray[row][col] = img1[0][row][col]*299/1000+\
+    #                          img1[1][row][col]*587/1000+\
+    #                          img1[2][row][col]*114/1000
+
+
+    import matplotlib.pyplot as plt
+
+    fig, axs = plt.subplots(2,3, sharex=True, sharey= True)
+    print(fig)
+    print(axs)     #[[<Axes: > <Axes: >]
+                   # [<Axes: > <Axes: >]]     二維ndarray
+    axs[0, 0].imshow(img)
+    axs[0, 0].set_title("RGB")
+
+    axs[0,2].imshow(gray,cmap="gray")
+    axs[0,2].set_title("gray")
+
+    axs[1, 0].imshow(img1[0], cmap='gray')
+    axs[1, 0].set_title("R")
+
+    axs[1, 1].imshow(img1[1], cmap='gray')
+    axs[1, 1].set_title("G")
+
+    axs[1, 2].imshow(img1[2], cmap='gray')
+    axs[1, 2].set_title("B")
+
+    plt.tight_layout()
+    plt.show()
