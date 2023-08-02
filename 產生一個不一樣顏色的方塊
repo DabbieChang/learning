@@ -1,0 +1,61 @@
+import turtle
+import random
+
+turtle.colormode(255)
+turtle.setup(width=620, height=620)    #調整視窗大小
+#turtle.shape('turtle')
+#turtle.turtlesize(1,1)
+turtle.hideturtle()
+turtle.speed(0)
+
+r = random.randint(0, 255)
+g = random.randint(0, 255)
+b = random.randint(0, 255)
+
+turtle.pencolor(r, g, b)
+turtle.fillcolor(r, g, b)
+
+x=5
+y=4
+
+m=random.randint(0,x)
+n=random.randint(0,y)
+
+for j in range(y):   #row
+
+    for i in range(x):    #col
+        if j == m and i == n:
+            r1= r +15
+            if r1 > 255:
+                r1 = 255
+            g1= g + 15
+            if g1 > 255:
+                g1 = 255
+            b1 = b + 15
+            if b1 > 255:
+                b1 = 255
+            turtle.pencolor(r1, g1, b1)
+            turtle.fillcolor(r1, g1, b1)
+        else:
+            turtle.pencolor(r, g, b)
+            turtle.fillcolor(r, g, b)
+
+        turtle.penup( )
+        turtle.goto(-190+i*120,190-j*120)
+        turtle.setheading(90)
+
+        turtle.begin_fill()
+        turtle.pendown( )
+        turtle.forward(100)
+        turtle.left(90)
+        turtle.forward(100)
+        turtle.left(90)
+        turtle.forward(100)
+        turtle.left(90)
+        turtle.forward(100)
+        turtle.left(90)
+        turtle.end_fill()
+
+
+
+turtle.done()
