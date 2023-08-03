@@ -1,0 +1,18 @@
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+with Image.open("C:\\Users\\daiyi\\OneDrive\\桌面\\PYTHON\\python(dai)\\Numpy_OpenCV\\\imgs\\small.jpg") as im:
+
+    img = np.array(im)    #(8,8,3)
+    img1=np.ones((img.shape), dtype=np.uint8)*255
+    img1[1:7,1:7,:] = img[1:7,1:7,:]
+
+    fig, axs = plt.subplots(1,2,sharex =True, sharey = True)
+    axs[0].imshow(img)
+    axs[0].set_title("原始")
+    axs[1].imshow(img1)
+    axs[1].set_title("切割")
+    plt.tight_layout()
+    plt.show()
